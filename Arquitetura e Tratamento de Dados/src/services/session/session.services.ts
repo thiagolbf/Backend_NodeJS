@@ -32,8 +32,6 @@ export const sessionService = async (
     throw new AppError("Wrong email/password", 401);
   }
 
-  console.log(queryResult.rowCount);
-
   const checkPassword = await compare(
     validatedData.password,
     queryResult.rows[0].password
