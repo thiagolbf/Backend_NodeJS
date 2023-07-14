@@ -1,7 +1,7 @@
 import { User, UserRequest, UserList } from "../../interfaces/user.interface";
 import {
   createUserSchema,
-  userWithoutPassword,
+  userWithoutPasswordSchema,
 } from "../../schemas/user.schema";
 
 import { client } from "../../database/connection";
@@ -29,5 +29,5 @@ export const createUserService = async (
 
   const queryResult: QueryResult<User> = await client.query(queryString);
 
-  return userWithoutPassword.parse(queryResult.rows[0]);
+  return userWithoutPasswordSchema.parse(queryResult.rows[0]);
 };
