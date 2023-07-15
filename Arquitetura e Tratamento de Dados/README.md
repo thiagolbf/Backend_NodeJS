@@ -1,6 +1,6 @@
 # API - Movies
 
-#### Projeto (Back-End) de uma API REST para registro de desenvolvedores e seus projetos.
+#### Projeto (Back-End) de uma API REST de CRUD de usuário + Permissão de Administrador.
 
 ### Tecnologias utilizadas;
 
