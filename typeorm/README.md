@@ -34,7 +34,7 @@
 
 ## **Regras de Paginação**
 
-A rota **GET /movies** deve conter paginação.
+A rota **GET /movies** contém paginação.
 
 - Essa rota recebe quatro query params, sendo eles: **_page_**, **_perPage_**, **_order_** e **_sort_**.
 - Essa rota retornará um objeto de paginação que irá conter as seguintes chaves: **prevPage**, **nextPage**, **count** e **data**.
@@ -59,16 +59,14 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 ### **Query params: perPage e page**
 
 - **perPage**: recebe qual a **_quantidade_** de dados que devem ser **retornados**.
-
   - Caso o número enviado seja **_maior que cinco_**, retornará **_retornar cinco dados_**.
-
 - **page**: recebe qual **_página_** deve ser **_retornada_**.
 
 ## **Exemplos de Requisição**
 
 ### **Casos de Erro:**
 
-- O **nome** (name) deve ser **único**. Nas rotas **POST e PATCH /movies**, caso seja enviado um nome já registrado, deve retornar a mensagem de erro e o status code mencionados abaixo.
+- O **nome** é **único**. Nas rotas **POST e PATCH /movies**, caso seja enviado um nome já registrado, retorna mensagem de erro e o status code mencionados abaixo.
 
   | Resposta do servidor:                                 |
   | ----------------------------------------------------- |
@@ -81,24 +79,7 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
   }
   ```
 
-- A **_serialização_** dos dados de entrada deve ser feita utilizando o **_zod_**. Essa serialização deve acontecer nas rotas **_POST e PATCH_**. Em caso de erro ao validar os dados, deve retornar a mensagem de erro e o status code mencionados abaixo.
-
-  | Resposta do servidor:                                    |
-  | -------------------------------------------------------- |
-  | Body: Formato Json                                       |
-  | Status code: <b style="color:orange">400 BAD REQUEST</b> |
-
-  ```json
-  {
-    "message": {
-      "price": ["Required"],
-      "name": ["Expected string, received number"],
-      "duration": ["Expected number, received string"]
-    }
-  }
-  ```
-
-- Em **todas as rotas que recebem id por parâmetro**, deve verificar se o **_id informado existe_**. Caso o filme (movie) não exista, deve retornar a mensagem de erro e o status code mencionados abaixo.
+- Deve verificar se o **_id informado existe_**. Caso o filme (movie) não exista, retorna mensagem de erro e o status code mencionados abaixo.
 
   | Resposta do servidor:                                  |
   | ------------------------------------------------------ |
@@ -114,8 +95,6 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 ### **Casos de sucesso**
 
 ### **POST - /movies**
-
-Rota de criação de filmes. A chave **_description_** é **_opcional_**.
 
 | Dados de Envio:    |
 | ------------------ |
@@ -136,7 +115,6 @@ Rota de criação de filmes. A chave **_description_** é **_opcional_**.
 | Status code: <b style="color:green">201 CREATED</b> |
 
 ```json
-// Repare nos valores de ID enviados e retornados⁠
 {
   "id": 1,
   "name": "Movie: Sem description",
