@@ -172,5 +172,4 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 
 | Resposta do servidor:                                  |
 | ------------------------------------------------------ |
-| Body: **Nenhum body deve ser retornado**               |
 | Status code: <b style="color:green">204 NO CONTENT</b> |
