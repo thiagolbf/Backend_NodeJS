@@ -66,7 +66,7 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 
 ### **Casos de Erro:**
 
-- O **nome** é **único**. Nas rotas **POST e PATCH /movies**, caso seja enviado um nome já registrado, retorna mensagem de erro abaixo.
+- O **nome** é **único**. Caso seja enviado um nome já registrado, retorna mensagem de erro abaixo.
 
   ```json
   {
@@ -74,7 +74,7 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
   }
   ```
 
-- Deve verificar se o **_id informado existe_**. Caso o filme (movie) não exista, retorna mensagem de erro abaixo.
+- Verifica se o **_id informado existe_**. Caso o filme (movie) não exista, retorna mensagem de erro abaixo.
 
   ```json
   {
@@ -174,7 +174,3 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 | ------------------------------------------------------ |
 | Body: **Nenhum body deve ser retornado**               |
 | Status code: <b style="color:green">204 NO CONTENT</b> |
-
-```json
-
-```
