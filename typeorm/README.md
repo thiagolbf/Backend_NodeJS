@@ -1,71 +1,6 @@
-# Locadora de filmes com TypeORM
+# Em construção 🚧
 
-# Introdução
-
-Há alguns dias você recebeu uma demanda para elaborar a API de um serviço de locação de filmes. Porém a forma com que você executou e as ferramentas que utilizou não agradaram o nosso cliente... É... ele é exigente.
-
-Portanto, agora você precisará reescrever esse projeto com outras tecnologias. Além disso o cliente adicionou algumas novas regras de negócio ao projeto.
-
-Bora para esse desafio?!
-
-# Regras da entrega
-
-**A entrega deve seguir as seguintes regras:**
-
-- O código deve estar em **_TypeScript_**, caso não esteja a entrega será zerada;
-- Deve ser feita a **_serialização_** dos dados utilizando a biblioteca **_zod_**.
-- Deverá ser utilizado um banco de dados **_postgres_** para a elaboração da API;
-- Deverá utilizar **_TypeORM_** no lugar de **_PG e PG-Format_**
-- O nome da tabela/entidade, colunas e demais especificações, devem ser **_seguidas à risca_**. Caso tenha divergência, será descontado nota;
-  - Tenha muita atenção sobre o nome das chaves nos objetos de entrada e saída de cada requisição;
-- Na raiz do diretório deve-se conter uma imagem do DER nomeada como diagram.png/jpg
-  - Esse DER não pode ser o criado
-
-**Essa entrega possui testes automatizados, portanto:**
-
-- A alteração nos testes implica em ter a nota da entrega zerada.
-- Os arquivos de testes e configuração para execução deles, já se encontram no repositório da entrega, sendo necessário configurar a conexão com o banco de dados para teste e desenvolvimento, e todo o restante para que a aplicação funcione.
-- Não altere nenhum arquivo, apenas acrescente os arquivos que forem necessários.
-
-      Dica!
-      Como essa entrega contém testes, sempre que criar uma nova rota execute o comando de execução dos testes npm run test ou yarn test a depender do gerenciador de pacotes usado.
-      A execução dos testes a cada criação de rota ajuda no debug e no andamento do projeto, e evita erros surpresas quando o projeto estiver 100% concluído.
-      
-**Inicialização do projeto**
-- Será necessário estruturar todo o repositório e instalar as dependências corretas para o funcionamento do projeto.
-No diretório estão apenas os arquivos e sub-pastas:
-- **.env.example**:
-  - Contendo apenas a variável DATABASE_URL que deverá conter a url de conexão com o banco;
-  - Deve ser utilizado como base para o seu .env.
-
-
-- **package.json**:
-  - Estão definidas nesse arquivo apenas as bibliotecas relacionadas aos testes;
-  - Todas as demais bibliotecas devem ser instaladas por você.
-
-
-- **.gitignore**:
-  - Caso sinta necessidade pode adicionar novos arquivos à serem ignorados.
-
-
-- **jest.config.ts**:
-  - Arquivo de configuração para os testes
-
-
-- **src/entities**:
-  - Por necessidade dos testes, precisamos que a estrutura siga a pré definida.
-  - Será necessário completar o arquivo movies.entity.ts com a criação correta da entidade de Movies.
-  - Apenas acrescente o código necessário, não mude nada que já está feito.
-
-
-- **src/__tests__**:
-  - Não devem ser alterados, caso os testes tenham qualquer tipo de alteração a entrega será zerada.
-
-
-        aviso
-        Nessa entrega a conexão com o banco de dados não está sendo realizada. 
-        Portanto lembre-se de realizar a conexão para o banco de desenvolvimento e para o banco de testes.
-
+# API para locadora de filmes com TypeORM
 
 # Endpoints
 
@@ -93,7 +28,7 @@ No diretório estão apenas os arquivos e sub-pastas:
 - O **nome da classe da entidade deve ser Movie** e deve ser criado um arquivo index.ts dentro da pasta de entities centralizando o export dela para que os testes funcionem.
 
 - Nas rotas **POST** e **PATCH**, é necessário serializar os dados de entrada utilizando o zod. Chaves não mapeadas devem ser ignoradas.
-- Na rota **POST /movies**, a chave id deve ser ignorada, o próprio serviço deve preencher esse dado. A chave **_description__** é **_opcional_**, caso não seja enviada deve ser salvo como **_null_**.
+- Na rota **POST /movies**, a chave id deve ser ignorada, o próprio serviço deve preencher esse dado. A chave **\_description\_\_** é **_opcional_**, caso não seja enviada deve ser salvo como **_null_**.
 - Na rota **PATCH /movies**, a chave id não pode ser atualizada, caso enviada deve ser ignorada.
 
 ## **Regras de Paginação**
@@ -184,10 +119,10 @@ Um exemplo mais claro estará nos exemplos de requisição da rota GET - /movies
 
   ```json
   {
-    message: {
-      price: ['Required'],
-      name: ['Expected string, received number'],
-      duration: ['Expected number, received string'],
+    "message": {
+      "price": ["Required"],
+      "name": ["Expected string, received number"],
+      "duration": ["Expected number, received string"]
     }
   }
   ```
