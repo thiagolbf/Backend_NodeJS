@@ -2,6 +2,17 @@
 
 # API para locadora de filmes com TypeORM
 
+### Tecnologias utilizadas;
+
+- Node.JS
+- Express.JS
+- Express-async-errors
+- Typescript
+- Zod
+- Pg
+- typeORM
+- PostgreSQL
+
 # Endpoints
 
 | Método | Endpoint    | Responsabilidade                  |
@@ -13,23 +24,13 @@
 
 # Regras da Aplicação
 
-- Deve ser criado um banco de dados em **_PostgreSQL_** com uma tabela/entidade nomeada como **_movies_**, para armazenar os dados das requisições.
-
-- A tabela de **_movies_** deve ter as colunas necessárias para armazenar os seguintes dados:
+- A tabela de **_movies_** contém os seguintes dados:
 
   - **id**: inteiro, sequencial e chave primária.
   - **name**: string, tamanho máximo de 50, único e obrigatório.
   - **description**: texto.
   - **duration**: inteiro e obrigatório.
   - **price**: inteiro e obrigatório.
-
-- Como estamos trabalhando com TypeORM, deve ser criada uma entidade de movies com os campos descritos acima, e essa entidade vai ser convertida em tabela através de uma migração.
-
-- O **nome da classe da entidade deve ser Movie** e deve ser criado um arquivo index.ts dentro da pasta de entities centralizando o export dela para que os testes funcionem.
-
-- Nas rotas **POST** e **PATCH**, é necessário serializar os dados de entrada utilizando o zod. Chaves não mapeadas devem ser ignoradas.
-- Na rota **POST /movies**, a chave id deve ser ignorada, o próprio serviço deve preencher esse dado. A chave **\_description\_\_** é **_opcional_**, caso não seja enviada deve ser salvo como **_null_**.
-- Na rota **PATCH /movies**, a chave id não pode ser atualizada, caso enviada deve ser ignorada.
 
 ## **Regras de Paginação**
 
@@ -42,7 +43,7 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 
 ### **Query params: order e sort**
 
-- **sort**: recebe em qual **_coluna_** a ordenação deve ser feita. Pode receber apenas dois valores:
+- **sort**:
 
   - **_price_**
   - **_duration_**
@@ -59,43 +60,13 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 
 - **perPage**: recebe qual a **_quantidade_** de dados que devem ser **retornados**.
 
-  - Deve receber apenas **números inteiros e maiores que 0**
-  - Caso o número enviado não atenda esses requisitos:
-    - deve retornar os **_cinco primeiros dados_**.
-  - O valor **_máximo_** à ser retornado deve ser **_cinco_**
-    - Caso o número enviado seja **_maior que cinco_**, deve **_retornar cinco dados_**.
+  - Caso o número enviado seja **_maior que cinco_**, retornará **_retornar cinco dados_**.
 
 - **page**: recebe qual **_página_** deve ser **_retornada_**.
-  - Recebe apenas **números inteiros e maiores que 0**
-  - Caso o número enviado **_não atenda_** esses requisitos, deve utilizar a **_primeira página_**, ou seja, deve ser **_1_**
-  - Deve **_respeitar_** o **_perPage_**:
-    - se **_page_** for igual à **_três_** e **_perPage_** for igual à **_dois_**, deve **_retornar dois dados_**, **_começando pelo id cinco_** e indo **_até_** o **_id seis_**.
-
-### **Objeto de paginação**
-
-Deve seguir as regras do page e do perPage.
-
-Um exemplo mais claro estará nos exemplos de requisição da rota GET - /movies
-
-- **prevPage**: página anterior
-  - **_tipo_**: string ou null;
-  - Caso a próxima página exista, deve retornar uma url redirecionando para a página;
-  - Caso contrario deve retornar null;
-- **nextPage**: próxima página;
-  - **_tipo_**: string ou null;
-  - Caso a próxima página exista, deve retornar uma url redirecionando para a página;
-  - Caso contrario deve retornar null;
-- **count**: contagem de dados existentes no banco de dados;
-  - **_tipo_**: number;
-- **data**: os filmes listados pela requisição;
-  - **_tipo_**: Array de movies;
-  - A quantidade de filmes retornados deve seguir as regras do perPage.
 
 ## **Exemplos de Requisição**
 
 ### **Casos de Erro:**
-
-    Todos os casos de erros listados a seguir, devem ser executados por meio de middlewares.
 
 - O **nome** (name) deve ser **único**. Nas rotas **POST e PATCH /movies**, caso seja enviado um nome já registrado, deve retornar a mensagem de erro e o status code mencionados abaixo.
 
@@ -177,8 +148,6 @@ Rota de criação de filmes. A chave **_description_** é **_opcional_**.
 
 ### **GET - /movies**
 
-Deve ser possível listar os filmes armazenados no banco de dados. **_Seguindo as regras de paginação_**
-
 **Url da requisição**: `http://localhost:3000/movies/?sort=price&order=desc&page=2&perPage=3`
 
 | Resposta do servidor:                          |
@@ -219,8 +188,6 @@ Deve ser possível listar os filmes armazenados no banco de dados. **_Seguindo a
 
 ### **PATCH - /movies/:id**
 
-Deve ser possível atualizar um filme pelo id recebido nos parâmetros da rota.
-
 **Url da requisição**: `http://localhost:3000/movies/4`
 
 | Dados de Envio:    |
@@ -242,7 +209,6 @@ Deve ser possível atualizar um filme pelo id recebido nos parâmetros da rota.
 
 ```json
 {
-  // repare no valor enviado e no recebido do id
   "id": 4,
   "name": "Filme 04",
   "description": null,
@@ -252,8 +218,6 @@ Deve ser possível atualizar um filme pelo id recebido nos parâmetros da rota.
 ```
 
 ### **DELETE - /movies/:id**
-
-Deve ser possível deletar um filme pelo id recebido nos parâmetros da rota.
 
 | Resposta do servidor:                                  |
 | ------------------------------------------------------ |
