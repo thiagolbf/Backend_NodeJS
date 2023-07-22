@@ -47,12 +47,12 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 
   - **_price_**
   - **_duration_**
-    - Caso **_nenhum_** desses valores seja enviado, deve ordenar por **_id_**.
+    - Caso **_nenhum_** desses valores seja enviado, a ordenação será por **_id_**.
 
 - **order**: recebe qual o **_tipo_** de ordenação que será feita. Pode receber apenas dois valores:
   - **asc**
   - **desc**
-  - Caso **_nenhum_** desses valores seja enviado, deve utilizar **_asc_**.
+  - Caso **_nenhum_** desses valores seja enviado, será por default **_asc_**.
   - O **_tipo_** de ordenação só funciona caso **sort seja enviado**:
     - caso não seja enviado, o tipo deve ser **_asc_**.
 
@@ -66,12 +66,7 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 
 ### **Casos de Erro:**
 
-- O **nome** é **único**. Nas rotas **POST e PATCH /movies**, caso seja enviado um nome já registrado, retorna mensagem de erro e o status code mencionados abaixo.
-
-  | Resposta do servidor:                                 |
-  | ----------------------------------------------------- |
-  | Body: Formato Json                                    |
-  | Status code: <b style="color:orange">409 CONFLICT</b> |
+- O **nome** é **único**. Nas rotas **POST e PATCH /movies**, caso seja enviado um nome já registrado, retorna mensagem de erro abaixo.
 
   ```json
   {
@@ -79,12 +74,7 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
   }
   ```
 
-- Deve verificar se o **_id informado existe_**. Caso o filme (movie) não exista, retorna mensagem de erro e o status code mencionados abaixo.
-
-  | Resposta do servidor:                                  |
-  | ------------------------------------------------------ |
-  | Body: Formato Json                                     |
-  | Status code: <b style="color:orange">404 NOT FOUND</b> |
+- Deve verificar se o **_id informado existe_**. Caso o filme (movie) não exista, retorna mensagem de erro abaixo.
 
   ```json
   {
@@ -96,10 +86,6 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 
 ### **POST - /movies**
 
-| Dados de Envio:    |
-| ------------------ |
-| Body: Formato Json |
-
 ```json
 {
   "id": 40,
@@ -109,10 +95,8 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 }
 ```
 
-| Resposta do servidor:                               |
-| --------------------------------------------------- |
-| Body: Formato Json                                  |
-| Status code: <b style="color:green">201 CREATED</b> |
+| Resposta do servidor: |
+| --------------------- |
 
 ```json
 {
@@ -127,11 +111,6 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 ### **GET - /movies**
 
 **Url da requisição**: `http://localhost:3000/movies/?sort=price&order=desc&page=2&perPage=3`
-
-| Resposta do servidor:                          |
-| ---------------------------------------------- |
-| Body: Formato Json                             |
-| Status code: <b style="color:green">200 OK</b> |
 
 ```json
 {
@@ -168,10 +147,6 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 
 **Url da requisição**: `http://localhost:3000/movies/4`
 
-| Dados de Envio:    |
-| ------------------ |
-| Body: Formato Json |
-
 ```json
 {
   "id": 55,
@@ -180,10 +155,8 @@ Segue abaixo o que cada chave significa e a regra de cada um dos query params.
 }
 ```
 
-| Resposta do servidor:                          |
-| ---------------------------------------------- |
-| Body: Formato Json                             |
-| Status code: <b style="color:green">200 OK</b> |
+| Resposta do servidor: |
+| --------------------- |
 
 ```json
 {
