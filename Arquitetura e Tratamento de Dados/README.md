@@ -1,4 +1,4 @@
-# API - Movies
+# API - Criação de Usuários
 
 #### Projeto (Back-End) de uma API REST de CRUD de usuário + Permissão de Administrador.
 
