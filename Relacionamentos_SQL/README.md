@@ -1,4 +1,4 @@
-# API - Movies
+# API - Desenvolvedores
 
 #### Projeto (Back-End) de uma API REST para registro de desenvolvedores e seus projetos.
 
