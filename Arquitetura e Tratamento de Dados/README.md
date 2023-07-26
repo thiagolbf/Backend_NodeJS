@@ -17,9 +17,9 @@
 
 ##### Regras do Serviço:
 
-- As rotas GET, PATCH, DELETE e PUT devem estar protegidas por um middleware de validação do token JWT.
-- A rota de /login Deve validar se o usuário existe, se ele está ativo e se a senha está correta.
-- Na rota /users/:id/recover o active deve ser alterado para true.
+- As rotas GET, PATCH, DELETE e PUT são protegidas por token JWT.
+- A rota de /login Faz validação se o usuário existe, se ele está ativo e se a senha está correta.
+- Na rota /users/:id/recover o active é alterado para true.
 
 ### Tabela
 
@@ -35,8 +35,6 @@
 | active   | booleano, obrigatório e verdadeiro por padrão         |
 
 ### Endpoints do serviço: (Rotas)
-
-#### developers
 
 | Verbo  | Rota               | Descrição                           |
 | ------ | ------------------ | ----------------------------------- |
