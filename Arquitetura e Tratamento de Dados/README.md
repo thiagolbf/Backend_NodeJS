@@ -17,7 +17,7 @@
 
 ##### Regras do Serviço:
 
-- As rotas GET, PATCH, DELETE e PUT são protegidas por token JWT.
+- As rotas GET, PATCH e DELETE são protegidas por token JWT.
 - A rota de /login Faz validação se o usuário existe, se ele está ativo e se a senha está correta.
 - Na rota /users/:id/recover o active é alterado para true.
 
