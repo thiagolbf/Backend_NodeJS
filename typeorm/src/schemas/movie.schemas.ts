@@ -10,6 +10,6 @@ const movieSchema = z.object({
 
 const createMovieSchema = movieSchema.omit({ id: true });
 
-const updateMovieSchema = movieSchema.partial();
+const updateMovieSchema = createMovieSchema.partial();
 
 export { movieSchema, createMovieSchema, updateMovieSchema };
