@@ -39,7 +39,5 @@ export const updateMovieController = async (
 ): Promise<Response> => {
   const movieUpdate = await updateMovieService(res.locals.movie, req.body);
 
-  console.log(movieUpdate);
-
   return res.status(200).json(movieUpdate);
 };
