@@ -1,5 +1,3 @@
-# Em construção 🚧
-
 # API para locadora de filmes com TypeORM
 
 ### Tecnologias utilizadas;
